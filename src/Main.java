@@ -22,7 +22,7 @@ public class Main
         Grid a11 = new Grid(true,new Point(2,0));
         Grid a12 = new Grid(true,new Point(2,2));
         Grid a13 = new Grid(true,new Point(2,3));
-        Grid end = new Grid(true,new Point(2,1));
+        Grid end = new Grid(true,new Point(20,1));
         HashMap<Point,Grid> map = new HashMap();
         map.put(start.coords,start);
         map.put(end.coords,end);
@@ -42,6 +42,7 @@ public class Main
         Maze maze = new Maze(map,start,end);
         maze.pathFind();
         System.out.println(maze.explored);
+        System.out.println(maze.solvable);
         System.out.println(maze.path);
     }
 }

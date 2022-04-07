@@ -17,6 +17,7 @@ public class Maze
     public Grid current;
     public Grid start;
     public Grid end;
+    public boolean solvable = true;
 
     public Maze(HashMap<Point, Grid> nodes, Grid Start, Grid End)
     {
@@ -61,10 +62,11 @@ public class Maze
             }
             if(walkable.isEmpty())
             {
+                solvable = false;
                 break;
             }
         }
-        while(current != start)
+        while(current != start && solvable)
         {
             findpath();
         }
