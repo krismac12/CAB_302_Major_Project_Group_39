@@ -66,7 +66,7 @@ public class Maze
         }
         while(current != start)
         {
-            findpath();
+            findPath();
         }
     }
 
@@ -91,6 +91,7 @@ public class Maze
     }
 
     // Does not work for edge cases yet.
+
     public void findPath()
     {
         Point east = new Point(current.coords.x+1,current.coords.y);
