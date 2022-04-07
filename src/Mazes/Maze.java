@@ -90,7 +90,8 @@ public class Maze
         }
     }
 
-    public void findpath()
+    // Does not work for edge cases yet.
+    public void findPath()
     {
         Point east = new Point(current.coords.x+1,current.coords.y);
         Point west = new Point(current.coords.x-1,current.coords.y);
