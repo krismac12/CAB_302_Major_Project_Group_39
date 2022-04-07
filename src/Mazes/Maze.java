@@ -31,7 +31,7 @@ public class Maze
         current = start;
         findWalkable(current);
         int i = 0;
-        while(current != end)
+        while(true)
         {
             i++;
             int shortestDistance = 200;
@@ -53,8 +53,12 @@ public class Maze
                 walkable.remove(shortestGrid.coords);
                 explored.put(shortestGrid.coords,shortestGrid);
             }
+            if(current.coords == end.coords)
+            {
+                break;
+            }
             findWalkable(current);
-            if(i == 100)
+            if(i >= 1000)
             {
                 System.out.println("Infinite loop");
                 break;
