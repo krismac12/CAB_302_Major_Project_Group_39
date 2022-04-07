@@ -33,9 +33,7 @@ public class Maze
         int i = 0;
         while(true)
         {
-            System.out.println(i);
-            System.out.println(explored);
-            System.out.println(walkable);
+
             i++;
             int shortestDistance = 200;
             Grid shortestGrid = null;
@@ -52,41 +50,30 @@ public class Maze
                     shortestGrid = grid;
                 }
             }
-            System.out.println("1st");
             if(shortestGrid != null)
             {
                 current = shortestGrid;
                 walkable.remove(shortestGrid.coords);
                 explored.put(shortestGrid.coords,shortestGrid);
             }
-            System.out.println("2nd");
-            if(i == 111)
-            {
-                System.out.println();
-            }
             if(current.coords == end.coords)
             {
                 break;
             }
-            System.out.println("3rd");
             findWalkable(current);
-            if(i >= 1000)
-            {
-                System.out.println("Infinite loop");
-                break;
-            }
             if(walkable.isEmpty())
             {
                 solvable = false;
                 break;
             }
         }
-        /*
+        int d = 0;
         while(current != start && solvable)
         {
+            d++;
+            System.out.println(d);
             findpath();
         }
-        */
     }
 
     public void findWalkable(Grid current)
@@ -116,6 +103,7 @@ public class Maze
         Point north = new Point(current.coords.x,current.coords.y+1);
         Point south = new Point(current.coords.x,current.coords.y-1);
         Point[] points = {north,south,east,west};
+        Grid shortestGrid = null;
         ArrayList<Grid> exploredGrids = new ArrayList<>();
         for (Point point: points)
         {
@@ -127,12 +115,13 @@ public class Maze
         int shortestDistance = 200;
         for(Grid grid : exploredGrids)
         {
-            if(grid.startDistance <= shortestDistance)
+            if(grid.startDistance < shortestDistance && !path.containsValue(grid))
             {
                 shortestDistance = grid.startDistance;
-                current = grid;
+                shortestGrid = grid;
             }
         }
+        current = shortestGrid;
         path.put(current.coords,current);
     }
 }

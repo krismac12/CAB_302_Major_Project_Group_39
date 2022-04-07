@@ -9,11 +9,11 @@ public class Main
     public static void main(String[] args)
     {
         Grid start = new Grid(true,new Point(0,0));
-        Grid end = new Grid(true,new Point(10,10));
+        Grid end = new Grid(true,new Point(10,100));
         HashMap<Point,Grid> map = new HashMap();
-        for(int x = 0; x <=10;x++)
+        for(int x = 0; x <=100;x++)
         {
-            for(int y = 0 ; y <=10;y++)
+            for(int y = 0 ; y <=100;y++)
             {
                 map.put(new Point(x,y),new Grid(true,new Point(x,y)));
             }
@@ -22,6 +22,6 @@ public class Main
         map.put(end.coords,end);
         Maze maze = new Maze(map,start,end);
         maze.pathFind();
-        System.out.println(maze.explored);
+        System.out.println(maze.path);
     }
 }
