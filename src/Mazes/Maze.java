@@ -33,11 +33,16 @@ public class Maze
         int i = 0;
         while(true)
         {
+            System.out.println(i);
+            System.out.println(explored);
+            System.out.println(walkable);
             i++;
             int shortestDistance = 200;
             Grid shortestGrid = null;
+            int x = 0;
             for(Map.Entry<Point,Grid> entry : walkable.entrySet())
             {
+
                 Point coordinates = entry.getKey();
                 Grid grid = entry.getValue();
                 grid.setDistance(start.coords,end.coords);
@@ -47,16 +52,23 @@ public class Maze
                     shortestGrid = grid;
                 }
             }
+            System.out.println("1st");
             if(shortestGrid != null)
             {
                 current = shortestGrid;
                 walkable.remove(shortestGrid.coords);
                 explored.put(shortestGrid.coords,shortestGrid);
             }
+            System.out.println("2nd");
+            if(i == 111)
+            {
+                System.out.println();
+            }
             if(current.coords == end.coords)
             {
                 break;
             }
+            System.out.println("3rd");
             findWalkable(current);
             if(i >= 1000)
             {
@@ -69,10 +81,12 @@ public class Maze
                 break;
             }
         }
+        /*
         while(current != start && solvable)
         {
             findpath();
         }
+        */
     }
 
     public void findWalkable(Grid current)
@@ -94,7 +108,7 @@ public class Maze
             }
         }
     }
-
+    // not working
     public void findpath()
     {
         Point east = new Point(current.coords.x+1,current.coords.y);

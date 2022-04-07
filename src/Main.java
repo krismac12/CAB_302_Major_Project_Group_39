@@ -8,8 +8,8 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Grid start = new Grid(true,new Point(10,0));
-        Grid end = new Grid(true,new Point(0,10));
+        Grid start = new Grid(true,new Point(0,0));
+        Grid end = new Grid(true,new Point(10,10));
         HashMap<Point,Grid> map = new HashMap();
         for(int x = 0; x <=10;x++)
         {
@@ -22,8 +22,6 @@ public class Main
         map.put(end.coords,end);
         Maze maze = new Maze(map,start,end);
         maze.pathFind();
-        System.out.println(maze.grids);
-        System.out.println(maze.solvable);
-        System.out.println(maze.path);
+        System.out.println(maze.explored);
     }
 }
