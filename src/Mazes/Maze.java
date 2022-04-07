@@ -13,7 +13,6 @@ public class Maze
     public HashMap<Point, Grid> explored = new HashMap<>();
     public HashMap<Point, Grid> walkable = new HashMap<>();
     public HashMap<Point, Grid> path = new HashMap<>();
-    public HashMap<Point, Grid> solution;
     public Grid current;
     public Grid start;
     public Grid end;
